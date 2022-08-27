@@ -1,7 +1,10 @@
 # 샵 정보 가져오는 함수
+import json
 import time
 
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from Naver.ShopData import ShopData, ComplexEncoder
 
 
 def getShopInfo(shopdata,driver):
@@ -33,8 +36,7 @@ def getShopInfo(shopdata,driver):
             # 해당 info 의 클래스 찾기
             classes = info.get('class')
             classes_str = '.'.join(s for s in classes)
-            path = "'div > div > div > div:nth-child(6) > div > div.place_section.no_margin._18vYz > div > ul > li." + classes_str + " > div > a'"
-
+            path = "'div > div > div > div > div > div > div > ul > li." + classes_str + " > div > a'"
             # 영업시간 탭 열기 : webdriver쓰려고 했지만 상단의 타이틀 클릭이랑 같이 발생되어 오류 발생되서, 브라우저 콘솔에 자바 스크립트로 명령어 실행 시킨
             try:
                 driver.execute_script(
@@ -99,6 +101,7 @@ def getShopInfo(shopdata,driver):
                 shopdata.contactInfo.phoneNumber.private = number
             else:
                 shopdata.contactInfo.phoneNumber.home = number
+
 
 # shopdata = ShopData()
 # shopdata.contactInfo.naver_link = 'https://m.place.naver.com/nailshop/37589092'
