@@ -4,12 +4,16 @@ from datetime import datetime
 from ShopData import ShopData,ComplexEncoder
 from functions import getShopInfo
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
-driver = webdriver.Chrome()
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome('./chromedriver',chrome_options=chrome_options)
 
 import time
 start = time.time()  # 시작 시간 저장
-from selenium import webdriver
 import time
 from bs4 import BeautifulSoup
 
@@ -17,8 +21,12 @@ from bs4 import BeautifulSoup
 query = '동작구 네일'
 bot_qty = 5
 
-# 웹드라이버 생성 및 실행
-driver = webdriver.Chrome()
+# 웹 드라이버 생성 및 실행
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome('./chromedriver',chrome_options=chrome_options)
 driver.implicitly_wait(3)
 try:
     # 크롬 실행

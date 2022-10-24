@@ -4,8 +4,11 @@ import asyncio
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver import ActionChains, Keys
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+
+from selenium.webdriver.chrome.options import Options
 
 
 def igdownloader(driver, postId):
@@ -36,7 +39,11 @@ def igdownloader(driver, postId):
 
 
 postId = 'Chqy6Iwvs05/'
-driver = webdriver.Chrome()
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome('./chromedriver',chrome_options=chrome_options)
 try:
     igdownloader(driver, postId)
 finally:

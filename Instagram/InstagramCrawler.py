@@ -3,8 +3,10 @@ import time
 from bs4 import BeautifulSoup
 
 # 크롤링 설정
-from selenium import webdriver
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 def postIdCollector(driver, link):
@@ -64,7 +66,15 @@ def postIdCollector(driver, link):
 # 제공 받아야하는 부분
 shopUrl = 'https://www.instagram.com/ouioui.nail/'
 # 웹 드라이버 생성 및 실행
-driver = webdriver.Chrome()
+# driver = webdriver.Chrome()
+# driver = webdriver.Chrome(ChromeDriverManager().install())
+
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome('./chromedriver',chrome_options=chrome_options)
+
 
 try:
     postIds = postIdCollector(driver, shopUrl)
