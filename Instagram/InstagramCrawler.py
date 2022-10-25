@@ -1,5 +1,4 @@
 import time
-
 from bs4 import BeautifulSoup
 
 # 크롤링 설정
