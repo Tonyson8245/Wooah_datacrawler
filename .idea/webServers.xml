@@ -2,17 +2,17 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="09eabb4c-27fe-4693-9f50-a60a1effb2e4" name="aws">
-        <fileTransfer rootFolder="/var/gucci/Crawling" accessType="SFTP" host="13.125.244.4" port="22" sshConfigId="f15789f1-e30f-49e4-98b8-be7816edccde" sshConfig="ubuntu@13.125.244.4:22 key" keyPair="true">
+      <webServer id="09eabb4c-27fe-4693-9f50-a60a1effb2e4" name="crawler">
+        <fileTransfer rootFolder="/var/data_crawler" accessType="SFTP" host="121.134.145.45" port="22" sshConfigId="f15789f1-e30f-49e4-98b8-be7816edccde" sshConfig="wooah@121.134.145.45:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
       <webServer id="d47490c6-af46-4ba5-b9c5-1aa8db27e350" name="wooah">
-        <fileTransfer accessType="SFTP" host="121.134.145.45" port="22" sshConfigId="c17f6006-7ae3-487f-8efc-c920f78e1c1c" sshConfig="wooah@121.134.145.45:22 password">
+        <fileTransfer accessType="SFTP" host="121.134.145.45" port="22" sshConfigId="f15789f1-e30f-49e4-98b8-be7816edccde" sshConfig="wooah@121.134.145.45:22 password">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

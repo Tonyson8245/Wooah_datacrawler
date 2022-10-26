@@ -12,7 +12,7 @@ def postIdCollector(driver, link):
     driver.implicitly_wait(3)
 
     # 크롬 실행
-    driver.get(shopUrl)
+    driver.get(link)
     # driver.execute_script("return scrollTo(0,20000000)")
     time.sleep(2)
 
@@ -60,23 +60,3 @@ def postIdCollector(driver, link):
     print('무시함:' + str(notcrawled))
 
     return imageList
-
-
-# 제공 받아야하는 부분
-shopUrl = 'https://www.instagram.com/ouioui.nail/'
-# 웹 드라이버 생성 및 실행
-# driver = webdriver.Chrome()
-# driver = webdriver.Chrome(ChromeDriverManager().install())
-
-chrome_options = Options()
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome('./chromedriver',chrome_options=chrome_options)
-
-
-try:
-    postIds = postIdCollector(driver, shopUrl)
-    print(postIds)
-finally:
-    driver.quit()

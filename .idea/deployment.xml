@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="aws">
+      <paths name="crawler">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

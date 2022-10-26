@@ -1,18 +1,30 @@
+# 데이터 크롤러
+
 환경 : Ubuntu 22.04.01 LTS / Chrome : 106.5249.xx.xx
 
+## 요구사항
 1. 최신 크롬 설치
-2. [https://chromedriver.storage.googleapis.com](https://chromedriver.storage.googleapis.com/index.html) 에서 현재 크롬 버전에 맞춰(Major version) 다운로드하기
-3. beatifulsoup4 설치 : *pip install beutifulsoup4*
-4. selenium 설치 : *pip install selenium==3.14.1*
-→ 구버전으로 작성!!
-5. webdriver_manager 설치 : *pip install webdriver-manager*
-6. /var/gucci/Instagram 경로에서 *python3 InstagramCrawler.py* 실헹
+2. [chromedriver](https://chromedriver.storage.googleapis.com/index.html) 설치 (현재 크롬 버전에 맞춰 Major version 선택)
+3. python3.10 설치
+4. 패키지 설치
+```
+pip3 instll bs4 // beatifulsoup4
+pip3 install selenium==3.14.1 // 반드시 구버전으로 설치
+pip3 install webdriver-manager 
+pip3 install packaging
+pip3 install pydantic
+```
 
-### 수정시 주의 할점
+## 시작하기
+var/gucci/Instagram 경로에서 *python3 InstagramCrawler.py* 실헹
 
+## 주의사항
 - driver 객체는 사용이 끝나면, driver.quit 을 통해 필히 종료 시킬 것!!
 
-### 에러
+## 파일 구조
+
+
+## 에러 해결 방법
 
 - `ModuleNotFoundError: No module named 'bs4’`
     

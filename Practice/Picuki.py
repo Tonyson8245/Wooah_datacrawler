@@ -1,69 +1,58 @@
+import json
 import time
-import re
+import asyncio
 
 from bs4 import BeautifulSoup
-from tqdm import tqdm
-# 크롤링 설정
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+
 from selenium.webdriver.chrome.options import Options
 
 
-def postIdCollector(sub_driver,driver, shopId):
-    shopUrl = 'https://www.picuki.com/profile/'
+def igdownloader(driver, postId):
+    # 링크이동
+    driver.get('https://igdownloader.com/')
 
-    try:
-        # 크롬 실행
-        driver.get(f'{shopUrl}{shopId}')
-        driver.implicitly_wait(2)
+    url_box = driver.find_element(By.CSS_SELECTOR, "#photo > div > form > div > input")
+    act = ActionChains(driver)  # 동작 명령어 지정
+    act.send_keys_to_element(url_box, 'https://www.instagram.com/p/' + postId).send_keys(
+        Keys.RETURN).perform()  # 아이디 입력, 비밀 번호 입력, 로그인 버튼 클릭 수행
+    time.sleep(5)
 
-        html = driver.page_source
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
 
-        # soup에 넣어주기
-        soup = BeautifulSoup(html, 'html.parser')
+    # 결과 컨테이너
+    resultContainers = soup.select('main > div > div.section-results > div > div > div > div')
 
-        thumbContainers = soup.select(
-            "body > div.wrapper > div.content.box-photos-wrapper > ul > li")
+    # 결과 컨테이너 분해
+    for container in resultContainers:
+        # 제목은 빼고 밑의 사진인 포스트 wrapper 만 사용
+        if 'post-wrapper' in container['class'] and 'fa-camera' in container.select_one('div > div.post-type > span')['class']:
+            img_showLink = container.select_one('div.post >img')['src']
+            img_downLink = container.select_one('a')['href']
 
-        # 고정게시물 무시 테스트 코드
-        imageList = list()
-        for thumbRows in tqdm(thumbContainers):
-            thumbnails = thumbRows.select('div > div.photo > a')
-            for thumbnail in thumbnails:
-                link = thumbnail['href']
-                # 고정게시물인지 파악
-                sub_driver.get(link)
-
-                sub_html = sub_driver.page_source
-                sub_soup = BeautifulSoup(sub_html, 'html.parser')
-
-                regex = re.compile('{}(.*){}'.format(re.escape('let short_code = "'), re.escape('";')))
-                text = regex.findall(str(sub_soup))
-                link = text[0]
-
-                imageList.append(link)
-    finally:
-        driver.quit()
-        sub_driver.quit()
-
-    return imageList
+            print('SHOW: ' + img_showLink)
+            print('DOWNLOAD: ' + img_downLink)
 
 
-# 제공 받아야하는 부분
-shopId = str("innail_yd/")
-
-# 웹 드라이버 생성 및 실행
-# driver = webdriver.Chrome()
-# driver = webdriver.Chrome(ChromeDriverManager().install())
-
+postId = 'Chqy6Iwvs05/'
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome('./chromedriver', chrome_options=chrome_options)
-sub_driver = webdriver.Chrome('./chromedriver', chrome_options=chrome_options)
+driver = webdriver.Chrome('./chromedriver',chrome_options=chrome_options)
+try:
+    igdownloader(driver, postId)
+finally:
+    driver.quit()
 
-postIds = postIdCollector(sub_driver,driver,shopId)
-print(postIds)
+# # html 불러오기
+# html = driver.page_source
+# # soup에 넣어주기
+# soup = BeautifulSoup(html, 'html.parser')
 
 
-
+# print(json.dumps(imageData.dict(), indent=2, ensure_ascii=False))

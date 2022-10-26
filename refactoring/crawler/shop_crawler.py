@@ -1,0 +1,2 @@
+class ShopCrawler:
+    pass
