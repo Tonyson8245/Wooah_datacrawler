@@ -45,4 +45,8 @@
     구버전으로 작성 필요
     ex) *pip install selenium==3.14.1*
     
-    [[셀레니움 기초] executable_path has been deprecated, please pass in a Service object 에러 해결 방법](https://yeko90.tistory.com/entry/%EC%85%80%EB%A0%88%EB%8B%88%EC%9B%80-%EA%B8%B0%EC%B4%88-executablepath-has-been-deprecated-please-pass-in-a-Service-object-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95)
+    [[셀레니움 기초] executable_path has been deprecated, please pass in a Service object 에러 해결 방법](https://yeko90.tistory.com/entry/%EC%85%80%EB%A0%88%EB%8B%88%EC%9B%80-%EA%B8%B0%EC%B4%88-executablepath-has-been-deprecated-please-pass-in-a-Service-object-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95
+
+- `(unknown error: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location /usr/bin/google-chrome is no longer running, so ChromeDriver is assuming that Chrome has crashed.)`
+  PC 재부팅
