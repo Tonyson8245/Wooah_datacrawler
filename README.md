@@ -8,11 +8,13 @@
 3. python3.10 설치
 4. 패키지 설치
 ```
-pip3 instll bs4 // beatifulsoup4
-pip3 install selenium==3.14.1 // 반드시 구버전으로 설치
-pip3 install webdriver-manager 
-pip3 install packaging
-pip3 install pydantic
+pip instll bs4 // beatifulsoup4
+pip install selenium==3.14.1 // 반드시 구버전으로 설치
+pip install webdriver-manager 
+pip install packaging
+pip install pydantic
+pip install tqdm // 진행 중인 프로세스 확인할 때 사용
+pip install requests
 ```
 
 ## 시작하기
@@ -22,7 +24,7 @@ var/gucci/Instagram 경로에서 *python3 InstagramCrawler.py* 실헹
 - driver 객체는 사용이 끝나면, driver.quit 을 통해 필히 종료 시킬 것!!
 
 ## 파일 구조
-
+// 작성 예정
 
 ## 에러 해결 방법
 

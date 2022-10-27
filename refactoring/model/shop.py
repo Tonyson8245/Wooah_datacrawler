@@ -42,3 +42,9 @@ class ShopData(BaseModel):
     contact_info: ContactInfo
     shop_info: ShopInfo
     time: str
+
+
+class ShopInstagramIdInfo(BaseModel):
+    id: int
+    name: str
+    instagram_id: str
