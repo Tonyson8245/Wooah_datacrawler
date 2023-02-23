@@ -1,4 +1,14 @@
-환경 : Ubuntu 22.04.01 LTS / Chrome : 106.5249.xx.xx
+# 우아 데이터수집 서버
+우아-우리들의아름다움을 개발하면서 사용한 데이터 수집 서버 레포지토리입니다.
+
+### 사용 기술
+- Python
+- selenium
+- beatifulsoup4
+
+
+### 환경
+Ubuntu 22.04.01 LTS / Chrome : 106.5249.xx.xx
 
 1. 최신 크롬 설치
 2. [https://chromedriver.storage.googleapis.com](https://chromedriver.storage.googleapis.com/index.html) 에서 현재 크롬 버전에 맞춰(Major version) 다운로드하기
