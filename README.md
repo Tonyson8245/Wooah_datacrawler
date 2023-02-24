@@ -1,10 +1,15 @@
 # 우아 데이터수집 서버
 우아-우리들의아름다움을 개발하면서 사용한 데이터 수집 서버 레포지토리입니다.
 
+### 사용 언어
+- Python
+
 ### 사용 기술
 - Python
 - selenium
 - beatifulsoup4
+- Numpy
+- Pandas
 
 
 ### 환경
